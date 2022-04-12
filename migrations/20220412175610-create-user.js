@@ -10,16 +10,16 @@ module.exports = {
         primaryKey: true
       },
       fullname: {
-        type: Sequelize.STRING(150),
+        type: Sequelize.STRING,
         allowNull: false
       },
       email: {
-        type: Sequelize.STRING(11),
+        type: Sequelize.STRING,
         allowNull: false
       },
       active: {
         type: Sequelize.BOOLEAN,
-        allowNull: false
+        allowNull: true
       }
     })
   },

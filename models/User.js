@@ -19,8 +19,8 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false
             },
             active: {
-                type: DataTypes.Boolean,
-                allowNull: false
+                type: DataTypes.BOOLEAN,
+                allowNull: true
             }
         },
         {

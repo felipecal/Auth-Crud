@@ -3,37 +3,36 @@ import User from '../../../../models/User';
 export default {
     Query: {
 
-        getUser: async (parent, { id }, { database}) => {
+        getUser: async (parent, { id }, { database }, info) => {
             return await database.user.findByPk(id)
         },
-        
 
-        users: () => User.find(),
+
+        getAllUsers: async (parent, _, { database }, info) => {
+            return await database.user.findAll()
+        }
     },
     Mutation: {
-        createUser: (_, { data }) => User.create(data),
-        updateUser: (_, { id, data }) => User.findOneAndUpdate(id, data, { new: true }),
-        deleteUser: async (_, { id }) => {
-            const deleted = await User.findOneAndDelete(id);
-            return !!deleted;
-        }
+        createUser: async (parent, {input}, { database }, info) => {
+            console.log(input);
+            const user = await database.user.create({
+                fullname: input.fullname,
+                email: input.email,
+
+            })
+            console.log(user);
+            return user;
+        },
+        // updateUser: (_parent, { id, data }) => User.findOneAndUpdate(id, data, { new: true }),
+        // deleteUser: async (_, { id }) => {
+        //     const deleted = await User.findOneAndDelete(id);
+        //     return !!deleted;
+        // }
     },
 };
 
 // const resolvers = {
 
-//     Query: {
-//         async getStudent(root, { id }, { models }) {
-//             return models.Student.findByPk(id)
-//         },
-//         async getAllStudents(root, args, { models }) {
-//             return models.Student.findAll()
-//         },
-//         async getHobbies(root, { id }, { models }) {
-//             return models.Hobbies.findByPk(id)
-//         }
-
-//     },
 
 //     Mutation: {
 
