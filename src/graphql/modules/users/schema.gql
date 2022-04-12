@@ -1,22 +1,19 @@
 type User {
     _id: ID!
     fullName: String!
-    firstName: String!
-    lastName: String!
     email: String
     active: Boolean!
 }
 
 input UserInput {
-    firstName: String!
-    lastName: String!
-    email: String 
-    active: Boolean!
+    fullName: String!
+    email: String!
+    active: Boolean
 }
 
 type Query {
     users: [User!]!
-    user(id: ID!): User!
+    getUser(id: ID!): User!
 }
 
 type Mutation {
@@ -24,3 +21,4 @@ type Mutation {
     updateUser(id: ID!, data: UserInput!): User!
     deleteUser(id: ID!): Boolean
 }
+
