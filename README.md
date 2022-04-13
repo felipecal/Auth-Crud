@@ -21,12 +21,12 @@ Tabela de  conteúdos
       * [Back-End](#back-end)
       	 * JavaScript (NodejS)
       * [Framework](#framework)
-      * Express
-      * Apollo
-      * Graphql
-      * Pg
-      * Sequelize
-      * Dotenv
+      	* Express
+      	* Apollo
+      	* Graphql
+      	* Pg
+      	* Sequelize
+      	* Dotenv
 
 <!--te-->
 
