@@ -12,33 +12,28 @@ export default {
         }
     },
     Mutation: {
-        createUser: async (parent, {input}, { database }, info) => {
-            console.log(input);
+        createUser: async (parent, { input }, { database }, info) => {
             const user = await database.user.create({
                 fullname: input.fullname,
                 email: input.email,
-
             })
-            console.log(user);
             return user;
         },
-        // updateUser: (_parent, { id, data }) => User.findOneAndUpdate(id, data, { new: true }),
-        // deleteUser: async (_, { id }) => {
-        //     const deleted = await User.findOneAndDelete(id);
-        //     return !!deleted;
-        // }
+        updateUser: async (parent, { id, input }, { database }, info) => {
+            const user = await database.user.findByPk(id)
+            if (!user) throw new Error('User not found');
+            const updateUser = await user.update(input);
+            return updateUser;
+        },
+        deleteUser: async (parent, { id }, { database }, info) => {
+            const user = await database.user.findByPk(id)
+            if (!user) throw new Error('User not found');
+            const deleteUser = await user.update({
+                removed_at: new Date()
+            });
+
+            return !!deleteUser;
+        }
+
     },
 };
-
-// const resolvers = {
-
-
-//     Mutation: {
-
-//         async createStudent(root, { firstName, email }, { models }) {
-//             return models.Student.create({
-//                 firstName,
-//                 email
-//             })
-
-//         },

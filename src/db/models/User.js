@@ -21,10 +21,22 @@ module.exports = function (sequelize, DataTypes) {
             active: {
                 type: DataTypes.BOOLEAN,
                 allowNull: true
+            },
+            created_at: {
+                type: DataTypes.DATE,
+                allowNull: true
+            },
+            updated_at: {
+                type: DataTypes.DATE,
+                allowNull: true
+            },
+            removed_at: {
+                type: DataTypes.DATE,
+                allowNull: true
             }
         },
         {
-            timestamps: false,
+            timestamps: true,
             underscored: true,
             freezeTableName: true
         }

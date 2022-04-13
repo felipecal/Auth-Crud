@@ -20,6 +20,18 @@ module.exports = {
       active: {
         type: Sequelize.BOOLEAN,
         allowNull: true
+      },
+      created_at: {
+        type: Sequelize.DATE,
+        allowNull: true
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        allowNull: true
+      },
+      removed_at: {
+        type: Sequelize.DATE,
+        allowNull: true
       }
     })
   },
