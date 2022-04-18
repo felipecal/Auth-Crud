@@ -3,7 +3,7 @@ import database from './db/models';
 
 function startServer({ typeDefs, resolvers }) {
     const server = new ApolloServer({
-        typeDefs, resolvers, context: ({ req }) => ({
+        typeDefs, resolvers, context: ({ req }) => ({ // 
             database,
             req
         })
