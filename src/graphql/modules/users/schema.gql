@@ -5,23 +5,18 @@ type User {
     active: Boolean
     created_at: String
     updated_at: String
-    removed_at: String
-}
+    removed_at: String }
 
 input UserInput {
     fullname: String!
     email: String!
-    active: Boolean
-}
+    active: Boolean }
 
 type Query {
     getAllUsers: [User!]!
-    getUser(id: ID!): User!
-}
+    getUser(id: ID!): User! }
 
 type Mutation {
     createUser(input: UserInput!): User!
     updateUser(id: ID!, input: UserInput!): User!
-    deleteUser(id: ID!): Boolean
-}
-
+    deleteUser(id: ID!): Boolean }
