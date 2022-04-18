@@ -26,7 +26,6 @@ Tabela de  conteúdos
       	* Graphql
       	* Pg
       	* Sequelize
-      	* Dotenv
 
 <!--te-->
 
