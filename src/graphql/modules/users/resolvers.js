@@ -6,7 +6,14 @@ export default {
         },
         getAllUsers: async (parent, _, { database }, info) => {
             return await database.user.findAll()
-        }
+        },
+        profile: async (parent, { first = 10, offset = 0 }, { database }, info) => {
+            return database.user.findAll({
+                limit: first,
+                offset: offset,
+                order: [['id', 'ASC']]
+            });
+        },
     },
     Mutation: {
         createUser: async (parent, { input }, { database }, info) => {

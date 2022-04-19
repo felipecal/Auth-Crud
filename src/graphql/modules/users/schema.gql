@@ -5,7 +5,8 @@ type User {
     active: Boolean
     created_at: String
     updated_at: String
-    removed_at: String }
+    removed_at: String
+}
 
 input UserInput {
     fullname: String!
@@ -14,7 +15,9 @@ input UserInput {
 
 type Query {
     getAllUsers: [User!]!
-    getUser(id: ID!): User! }
+    getUser(id: ID!): User!
+    profile(first: Int, offset: Int): [User]! }
+
 
 type Mutation {
     createUser(input: UserInput!): User!
