@@ -1,11 +1,21 @@
-
+import sequelize from 'sequelize';
 export default {
+    User: {
+        full_name: (user) => `${user.first_name} ${user.last_name}`
+    },
     Query: {
         getUser: async (parent, { id }, { database }, info) => {
             return await database.user.findByPk(id)
         },
-        getAllUsers: async (parent, _, { database }, info) => {
-            return await database.user.findAll()
+        getAllUsers: async (parent, { removed }, { database }, info) => {
+            const Op = sequelize.Op;
+            return await database.user.findAll({
+                where: {
+                    removed_at: {
+                        [Op.ne]: null
+                    }
+                }
+            })
         },
         profile: async (parent, { first = 10, offset = 0 }, { database }, info) => {
             return database.user.findAll({
@@ -18,7 +28,8 @@ export default {
     Mutation: {
         createUser: async (parent, { input }, { database }, info) => {
             const user = await database.user.create({
-                fullname: input.fullname,
+                first_name: input.first_name,
+                last_name: input.last_name,
                 email: input.email
             })
             return user;
