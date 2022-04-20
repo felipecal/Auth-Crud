@@ -38,9 +38,9 @@ export default {
     Mutation: {
         createPost: async (parent, { input }, { database }, info) => {
             const post = await database.post.create({
-                first_name: input.first_name,
-                last_name: input.last_name,
-                email: input.email
+                title: input.title,
+                content: input.content,
+                author: input.author
             })
             return post;
         },

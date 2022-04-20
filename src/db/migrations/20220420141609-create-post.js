@@ -3,10 +3,10 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('post', {
       id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
       },
       title: {
         type: Sequelize.STRING,
@@ -18,18 +18,22 @@ module.exports = {
       },
       author: {
         type: Sequelize.STRING,
-        allowNull: false
-      },
-      createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
       },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+      created_at: {
+        type: Sequelize.DATE,
+        allowNull: true
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        allowNull: true
+      },
+      removed_at: {
+        type: Sequelize.DATE,
+        allowNull: true
       }
     });
-  },
+},
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('post');
   }

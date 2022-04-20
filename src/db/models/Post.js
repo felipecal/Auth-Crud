@@ -2,6 +2,12 @@
 
 module.exports = (sequelize, DataTypes) => {
   const Post = sequelize.define('post', {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true
+    },
     title: {
       type: DataTypes.STRING,
       allowNull: false
@@ -12,7 +18,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     author: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'user',
+        key: 'first_name'
+      }
     },
     created_at: {
       type: DataTypes.DATE,
@@ -25,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     removed_at: {
       type: DataTypes.DATE,
       allowNull: true
-    },
+    }
   },
     {
       timestamps: true,
@@ -33,5 +43,10 @@ module.exports = (sequelize, DataTypes) => {
       freezeTableName: true
     }
   );
+  Post.associate = (models) => {
+    Post.belongsTo(models.user, {
+      foreignKey: 'id'
+    })
+  }
   return Post;
 };
