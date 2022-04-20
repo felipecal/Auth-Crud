@@ -10,7 +10,7 @@ export default {
         getAllUsers: async (parent,_, { database }, info) => {
             return await database.user.findAll()
         },
-        getNotRemoved: async (parent, { id }, { database }, info) => {
+        getNotRemovedUsers: async (parent, { id }, { database }, info) => {
             const Op = sequelize.Op;
             return await database .user.findAll({
                 where: { 
@@ -20,7 +20,7 @@ export default {
                 }
             })
         },
-        getRemoved: async (parent,_, { database }, info) => {
+        getRemovedUsers: async (parent,_, { database }, info) => {
             const Op = sequelize.Op;
             return await database.user.findAll({
                 where: {

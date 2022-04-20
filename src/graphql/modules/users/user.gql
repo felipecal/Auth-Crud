@@ -19,8 +19,8 @@ input UserInput {
 
 type Query {
     getAllUsers: [User!]!
-    getRemoved: [User!]!
-    getNotRemoved: [User!]!
+    getRemovedUsers: [User!]!
+    getNotRemovedUsers: [User!]!
     getUser(id: ID!): User!
     profile(first: Int, offset: Int): [User]! 
     }
