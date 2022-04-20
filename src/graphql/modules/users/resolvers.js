@@ -7,7 +7,20 @@ export default {
         getUser: async (parent, { id }, { database }, info) => {
             return await database.user.findByPk(id)
         },
-        getAllUsers: async (parent, { removed }, { database }, info) => {
+        getAllUsers: async (parent,_, { database }, info) => {
+            return await database.user.findAll()
+        },
+        getNotRemoved: async (parent, { id }, { database }, info) => {
+            const Op = sequelize.Op;
+            return await database .user.findAll({
+                where: { 
+                    removed_at: { 
+                        [Op.eq]: null, 
+                    }
+                }
+            })
+        },
+        getRemoved: async (parent,_, { database }, info) => {
             const Op = sequelize.Op;
             return await database.user.findAll({
                 where: {

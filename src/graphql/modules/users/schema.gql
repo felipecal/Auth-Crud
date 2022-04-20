@@ -17,7 +17,9 @@ input UserInput {
     active: Boolean }
 
 type Query {
-    getAllUsers(removed: Boolean): [User!]!
+    getAllUsers: [User!]!
+    getRemoved: [User!]!
+    getNotRemoved: [User!]!
     getUser(id: ID!): User!
     profile(first: Int, offset: Int): [User]! }
 
