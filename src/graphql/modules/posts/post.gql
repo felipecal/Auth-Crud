@@ -3,12 +3,14 @@ type Post{
     title: String!
     content: String!
     author: String!
+    user_id: Int!
+    user_author: User!
 }
 
 input PostInput{
     title: String!
     content: String!
-    author: String!
+    user_id: Int!
 }
 
 type Query{

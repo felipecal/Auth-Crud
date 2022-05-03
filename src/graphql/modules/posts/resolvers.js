@@ -40,7 +40,7 @@ export default {
             const post = await database.post.create({
                 title: input.title,
                 content: input.content,
-                author: input.author
+                user_id: input.user_id
             })
             return post;
         },
@@ -59,4 +59,8 @@ export default {
             return !!deletepost;
         }
     },
+
+    Post: {
+        
+    }
 };
