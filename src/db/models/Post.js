@@ -16,14 +16,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    author: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      references: {
-        model: 'user',
-        key: 'first_name'
-      }
-    },
     created_at: {
       type: DataTypes.DATE,
       allowNull: true
@@ -43,10 +35,13 @@ module.exports = (sequelize, DataTypes) => {
       freezeTableName: true
     }
   );
+
   Post.associate = (models) => {
     Post.belongsTo(models.user, {
-      foreignKey: 'id'
-    })
+      foreignKey: 'user_id',
+      as: 'user'
+    });
   }
-  return Post;
-};
+  return Post
+}
+

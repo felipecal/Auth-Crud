@@ -8,6 +8,15 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
       },
+      user_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'user', key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      },
       title: {
         type: Sequelize.STRING,
         allowNull: false
@@ -15,10 +24,6 @@ module.exports = {
       content: {
         type: Sequelize.STRING,
         allowNull: false
-      },
-      author: {
-        type: Sequelize.STRING,
-        allowNull: false,
       },
       created_at: {
         type: Sequelize.DATE,
@@ -33,7 +38,7 @@ module.exports = {
         allowNull: true
       }
     });
-},
+  },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('post');
   }
