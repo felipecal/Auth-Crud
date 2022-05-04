@@ -2,22 +2,22 @@ import sequelize from 'sequelize';
 export default {
     Query: {
         getPost: async (parent, { id }, { database }, info) => {
-            return await database.post.findByPk(id)
+           return await database.post.findByPk(id)
         },
-        getAllPosts: async (parent,_, { database }, info) => {
+        getAllPosts: async (parent, _, { database }, info) => {
             return await database.post.findAll()
         },
         getNotRemovedPost: async (parent, { id }, { database }, info) => {
             const Op = sequelize.Op;
-            return await database .post.findAll({
-                where: { 
-                    removed_at: { 
-                        [Op.eq]: null, 
+            return await database.post.findAll({
+                where: {
+                    removed_at: {
+                        [Op.eq]: null,
                     }
                 }
             })
         },
-        getRemovedPost: async (parent,_, { database }, info) => {
+        getRemovedPost: async (parent, _, { database }, info) => {
             const Op = sequelize.Op;
             return await database.post.findAll({
                 where: {
@@ -59,8 +59,14 @@ export default {
             return !!deletepost;
         }
     },
-
     Post: {
-        
+        userAuthor: async (parent, args, {database}, info) => {
+            console.log(info);
+            const user = await database.user.findByPk(parent.user_id);
+            if (!user) {
+                throw new Error('Author not found');
+            }
+            return user;
+        },
     }
 };
