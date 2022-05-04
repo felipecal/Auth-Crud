@@ -62,4 +62,13 @@ export default {
             return !!deleteUser;
         }
     },
-};
+    User: {
+        post: async (parent, { database }, info) => {
+            const post = await database.post.findAll();
+            if (!post) {
+                throw new Error('Post not found');
+            }
+            return post;
+    },
+    }
+}
