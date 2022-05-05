@@ -26,6 +26,11 @@ module.exports = {
       first_name: 'Gabriel',
       last_name: 'Felix',
       email: 'gabriel@gmail.com',
+    },
+    {
+      first_name: 'Lucas',
+      last_name: 'Stequero',
+      email: 'stequero@gmail.com',
     }], {});
   },
 
