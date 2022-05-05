@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function (sequelize, DataTypes) {
-    const User = sequelize.define('user', { // TODO: trade the name of the const
+    const user = sequelize.define('user', { // TODO: trade the name of the const
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -43,11 +43,11 @@ module.exports = function (sequelize, DataTypes) {
             freezeTableName: true
         },
     );
-    User.associate = (models) => {
-        User.hasMany(models.post, {
+    user.associate = (models) => {
+        user.hasMany(models.post, {
             foreignKey: 'user_id',
             as: 'user'
         })
     };
-    return User;
+    return user;
 };

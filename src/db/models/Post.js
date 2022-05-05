@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  const Post = sequelize.define('post', {
+  const post = sequelize.define('post', {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -36,12 +36,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  Post.associate = (models) => {
-    Post.belongsTo(models.user, {
+  post.associate = (models) => {
+    post.belongsTo(models.user, {
       foreignKey: 'user_id',
       as: 'user'
     });
   }
-  return Post
+  return post
 }
 
