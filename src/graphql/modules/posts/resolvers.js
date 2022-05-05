@@ -2,7 +2,7 @@ import sequelize from 'sequelize';
 export default {
     Query: {
         getPost: async (parent, { id }, { database }, info) => {
-           return await database.post.findByPk(id)
+            return await database.post.findByPk(id)
         },
         getAllPosts: async (parent, _, { database }, info) => {
             return await database.post.findAll()
@@ -60,8 +60,7 @@ export default {
         }
     },
     Post: {
-        userAuthor: async (parent, args, {database}, info) => {
-            console.log(info);
+        userAuthor: async (parent, args, { database }, info) => {
             const user = await database.user.findByPk(parent.user_id);
             if (!user) {
                 throw new Error('Author not found');
