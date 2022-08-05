@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres-auth
+    networks:
+      - auth-bridge
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_ṔASSWORD=1234
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - postgres:/var/lib/postgresql/data  
+
+      
+  
+  auth-crud:
+    image: auth-crud:latest
+    container_name: auth-crud
+    networks:
+      - auth-bridge
+    depends_on:
+      - postgres
+    ports:
+      - "3000:3000"
+
+networks: 
+  auth-bridge:
+    driver: bridge
+
+volumes:
+  postgres: 
+    driver: local
