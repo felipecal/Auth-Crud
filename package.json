@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "start": "npx babel-node --presets @babel/preset-env src/index.js",
     "dev": "npx nodemon --exec babel-node src/index.js -e js,gql"
   },
   "devDependencies": {
