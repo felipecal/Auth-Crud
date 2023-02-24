@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('post', {
+    return queryInterface.createTable("post", {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -12,34 +12,35 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'user', key: 'id'
+          model: "user",
+          key: "id",
         },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
       title: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       content: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       created_at: {
         type: Sequelize.DATE,
-        allowNull: true
+        allowNull: true,
       },
       updated_at: {
         type: Sequelize.DATE,
-        allowNull: true
+        allowNull: true,
       },
       removed_at: {
         type: Sequelize.DATE,
-        allowNull: true
-      }
+        allowNull: true,
+      },
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('post');
-  }
+    return queryInterface.dropTable("post");
+  },
 };

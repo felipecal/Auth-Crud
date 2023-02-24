@@ -1,34 +1,33 @@
 type User {
-    id: ID!
-    full_name: String!
-    first_name: String!
-    last_name: String!
-    email: String!
-    active: Boolean
-    created_at: String
-    updated_at: String
-    removed_at: String
-    post: [Post]
+  id: ID!
+  full_name: String!
+  first_name: String!
+  last_name: String!
+  email: String!
+  active: Boolean
+  created_at: String
+  updated_at: String
+  removed_at: String
+  post: [Post]
 }
 
-
 input UserInput {
-    first_name: String!
-    last_name: String!
-    email: String!
-    active: Boolean 
-    }
+  first_name: String!
+  last_name: String!
+  email: String!
+  active: Boolean
+}
 
 type Query {
-    getAllUsers: [User!]!
-    getRemovedUsers: [User!]!
-    getNotRemovedUsers: [User!]!
-    getUser(id: ID!): User!
-    profile(first: Int, offset: Int): [User]! 
-    }
+  getAllUsers: [User!]!
+  getRemovedUsers: [User!]!
+  getNotRemovedUsers: [User!]!
+  getUser(id: ID!): User!
+  profile(first: Int, offset: Int): [User]!
+}
 
 type Mutation {
-    createUser(input: UserInput!): User!
-    updateUser(id: ID!, input: UserInput!): User!
-    deleteUser(id: ID!): Boolean 
-    }
+  createUser(input: UserInput!): User!
+  updateUser(id: ID!, input: UserInput!): User!
+  deleteUser(id: ID!): Boolean
+}

@@ -1,11 +1,11 @@
 {
   "name": "AUTH-CRUD",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "license": "MIT",
   "scripts": {
-    "start": "npx babel-node --presets @babel/preset-env src/index.js",
-    "dev": "npx nodemon --exec babel-node src/index.js -e js,gql",
+    "start": "npx babel-node --presets @babel/preset-env src/index.ts",
+    "dev": "npx nodemon --exec babel-node src/index.ts -e js,gql",
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix",
     "format": "npx prettier --write ."
